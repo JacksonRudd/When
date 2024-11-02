@@ -29,15 +29,17 @@ li {
 }
 
 li::before {
-  content: "   ";
+  content: "";
   display: inline-block;
   width: 20px;
   height: 1px;
-  background-color: black; /* Customize color */
+  background-color: black;
+  margin-right: 5px;
 }
 
 li.divisible-by-five::before {
   width: 30px;
   height: 2px;
   font-weight: bold;
+  margin-right: 5px;
 }
