@@ -1,14 +1,6 @@
 .ruler {
   width: 20%;
   margin: 0px;
-  /* add a gradient background */
-  background: linear-gradient(
-    to right,
-    #f0f0f0 0%,
-    #f0f0f0 50%,
-    #f0f0f0 50%,
-    #f0f0f0 100%
-  );
 }
 ol {
   margin: 0;
@@ -18,9 +10,10 @@ ol {
 li {
   font-size: 0.625em;
   font-family: "Mulish";
-  height: 2em;
-  color: darkslategray;
+  height: 50px;
+  color: #2f4f4f;
   text-align: left;
+  line-height: 50px;
 }
 
 .divisible-by-five {
@@ -32,14 +25,15 @@ li::before {
   content: "";
   display: inline-block;
   width: 20px;
-  height: 1px;
-  background-color: black;
+  height: 2px;
+  background-color: #2f4f4f5e;
   margin-right: 5px;
 }
 
 li.divisible-by-five::before {
   width: 30px;
-  height: 2px;
+  transform: scaleY(2); /* Scales height smoothly */
+  background-color: #2f4f4f5e;
   font-weight: bold;
   margin-right: 5px;
 }
