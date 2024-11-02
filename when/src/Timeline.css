@@ -3,7 +3,6 @@
   height: 800px;
   overflow-x: auto;
   /* only assign a left border */
-  border-left: 4px solid #2f4f4f5e;
   font: 16px/1.5 "Roboto", sans-serif;
   /* remove scrollbar */
   scrollbar-width: none;

@@ -6,6 +6,8 @@ function Timeline() {
     <div>
       <div className="timeline">
         <Ruler></Ruler>
+        {/* To figure out next time */}
+        <div className="event">Some Event</div>
       </div>
     </div>
   );

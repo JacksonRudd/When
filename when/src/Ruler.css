@@ -1,6 +1,7 @@
 .ruler {
   width: 20%;
   margin: 0px;
+  border-left: 4px solid #2f4f4f5e;
 }
 ol {
   margin: 0;
