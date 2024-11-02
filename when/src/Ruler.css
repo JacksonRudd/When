@@ -1,0 +1,43 @@
+.ruler {
+  width: 20%;
+  margin: 0px;
+  /* add a gradient background */
+  background: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #f0f0f0 50%,
+    #f0f0f0 50%,
+    #f0f0f0 100%
+  );
+}
+ol {
+  margin: 0;
+  padding: 0px;
+}
+
+li {
+  font-size: 0.625em;
+  font-family: "Mulish";
+  height: 2em;
+  color: darkslategray;
+  text-align: left;
+}
+
+.divisible-by-five {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+li::before {
+  content: "   ";
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background-color: black; /* Customize color */
+}
+
+li.divisible-by-five::before {
+  width: 30px;
+  height: 2px;
+  font-weight: bold;
+}
