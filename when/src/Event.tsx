@@ -27,7 +27,12 @@ function Event({
   return (
     <div
       className="event"
-      style={{ "--event-height": `${height}px` } as React.CSSProperties}
+      style={
+        {
+          "--event-height": `${height - 75}px`,
+          "--event-x": `${300}px`,
+        } as React.CSSProperties
+      }
     >
       <p className="eventname">{eventName}</p>
     </div>

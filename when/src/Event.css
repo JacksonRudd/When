@@ -1,22 +1,84 @@
+:root {
+  --vertical-size: 150px;
+}
+
 .event {
   background: var(--outer-space);
   position: absolute;
   top: var(--event-height);
-  padding: 20px;
-  font-family: "Mulish";
-  color: var(--antiflash-white);
+  font-family: "Mulish", sans-serif;
+  color: var(--seasalt);
   font-size: 2rem;
+  height: var(--vertical-size);
+  left: var(--event-x);
+  /* add left and right padding but not top and bottom*/
+  padding: 0 20px;
+  /* test should be in the center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  left: 100px;
+  /* Enhancements */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transition for smooth hover effect */
+  /* shift the whole thing up by 50 px */
 }
 
+.event:hover {
+  /* Hover effect */
+  transform: scale(1.05); /* Slight scale-up on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* This creates a horizontal line that hits the timeline */
 .event::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100px;
-  width: 100px;
+  top: 50%; /* Center the line vertically */
+  left: calc(
+    0px - var(--event-x)
+  ); /* Position the line to the left of the event */
+  width: var(--event-x);
   height: 4px;
   background: inherit;
-  /* add a circle at the end */
+  transform: translateY(-50%); /* Ensure the line is centered */
+}
+
+/* I want that line to terminate in a circle that touches the timeline */
+.event::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* Center the circle vertically */
+  left: calc(
+    0px - var(--event-x)
+  ); /* Position the circle at the start of the line */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Circle shape */
+  background: inherit;
+  transform: translate(-50%, -50%); /* Ensure the circle is centered */
+}
+
+/* Additional CSS for better timeline spacing */
+.timeline-year {
+  font-weight: bold; /* Make the year stand out */
+  margin-bottom: 20px; /* Add spacing between year markers */
+  color: var(--outer-space); /* Ensure year is distinct */
+}
+
+/* Optional animation for events appearing */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.event {
+  animation: slideIn 0.5s ease forwards; /* Slide-in animation for each event */
 }
