@@ -1,4 +1,5 @@
 .timeline {
+  margin-left: 200px;
   height: auto;
   font: 16px/1.5 "Roboto", sans-serif;
   background-color: lightcyan;
@@ -6,5 +7,5 @@
   flex-direction: row;
   position: relative;
   scrollbar-width: none;
-  flex: 4;
+  width: 100% - 200px;
 }

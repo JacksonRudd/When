@@ -1,14 +1,14 @@
 /* the button and the .sidepanel class should stay in the same place as the user scrolls */
 
 .sidepanel {
-  flex: 1;
+  width: 200px;
+  position: fixed;
 }
 
 /* make a cool looking button */
 
 .options {
   font: 20px;
-  position: fixed;
   background-color: #f1f1f1;
   width: inherit;
   display: flex;

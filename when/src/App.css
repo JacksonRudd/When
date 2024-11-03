@@ -2,11 +2,5 @@ body,
 html {
   padding: 0px;
   margin: 0px;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 0px;
+  overscroll-behavior: none;
 }
