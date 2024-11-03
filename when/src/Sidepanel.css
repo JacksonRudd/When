@@ -1,18 +1,29 @@
 /* the button and the .sidepanel class should stay in the same place as the user scrolls */
 
 .sidepanel {
+  font-family: "Mulish", sans-serif;
+  background-color: var(--outer-space);
+  color: var(--seasalt);
+  text-align: center;
   width: 200px;
   position: fixed;
+  height: 100%;
+  padding-top: 20px;
+}
+
+button {
+  /* get rid of all stuling for button */
+  background-color: var(--outer-space);
+  color: var(--seasalt);
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  /* expect I do wat the pointer */
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--onyx);
 }
 
 /* make a cool looking button */
-
-.options {
-  font: 20px;
-  background-color: #f1f1f1;
-  width: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
