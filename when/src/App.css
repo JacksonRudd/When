@@ -7,8 +7,6 @@ html {
 .content {
   display: flex;
   flex-direction: row;
-  /*  give each item as much space as possible */
   width: 100%;
-  /* no gaps beween the element */
   gap: 0px;
 }
