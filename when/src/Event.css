@@ -1,0 +1,9 @@
+.event {
+  background: white;
+  position: absolute;
+  /*  top should be set to 50 * 78 */
+  top: 3900px;
+
+  left: 100px;
+  border-radius: 5px;
+}

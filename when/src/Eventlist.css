@@ -1,0 +1,6 @@
+.eventlist {
+  background-color: lightgray;
+  height: var(--eventlist-height);
+  width: 100%;
+  position: relative;
+}
