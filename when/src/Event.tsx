@@ -35,6 +35,11 @@ function Event({
       }
     >
       <p className="eventname">{eventName}</p>
+      {/* add description an location on hover in a div that starts hidden*/}
+      <div className="eventinfo">
+        <p>{description}</p>
+        <p>{location}</p>
+      </div>
     </div>
   );
 }
