@@ -1,6 +1,6 @@
 import React from "react";
 import Event from "./Event";
-import "./EventList.css";
+import "./EventListStyle.css";
 
 interface EventListProps {
   start: Date;
