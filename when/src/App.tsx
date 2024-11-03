@@ -1,5 +1,4 @@
 import "./App.css";
-import NavBar from "./NavBar";
 import Sidepanel from "./Sidepanel";
 import Timeline from "./Timeline";
 
