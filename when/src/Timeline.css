@@ -1,11 +1,10 @@
 .timeline {
-  width: 80%;
   height: auto;
-  overflow-y: scroll;
   font: 16px/1.5 "Roboto", sans-serif;
   background-color: lightcyan;
   display: flex;
   flex-direction: row;
   position: relative;
   scrollbar-width: none;
+  flex: 4;
 }

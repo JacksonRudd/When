@@ -2,14 +2,12 @@
   width: 100px;
   margin: 0px;
   padding: 0px;
-  /* border-right: 4px solid #2f4f4f5e; */
-  /* I had the above border, but when I scrolled it disappeared */
-  /* I added the below border to fix the above issue */
   border-right: 4px solid #2f4f4f5e;
 }
 ol {
   margin: 0;
   padding: 0px;
+  list-style: none;
 }
 
 .ruler li {

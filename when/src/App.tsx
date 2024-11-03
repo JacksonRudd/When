@@ -1,14 +1,16 @@
 import "./App.css";
 import NavBar from "./NavBar";
+import Sidepanel from "./Sidepanel";
 import Timeline from "./Timeline";
 
 function App() {
   return (
     <>
       <NavBar></NavBar>
-      <main className="content">
-        <h1>Timeline</h1>
+      <h1>Timeline</h1>
 
+      <main className="content">
+        <Sidepanel></Sidepanel>
         <Timeline></Timeline>
       </main>
     </>
