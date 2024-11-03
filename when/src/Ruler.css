@@ -7,7 +7,7 @@ ol {
   padding: 0px;
 }
 
-li {
+.ruler li {
   font-size: 0.625em;
   font-family: "Mulish";
   height: 50px;
@@ -16,12 +16,12 @@ li {
   line-height: 50px;
 }
 
-.divisible-by-five {
+.ruler .divisible-by-five {
   font-size: 1em;
   font-weight: bold;
 }
 
-li::before {
+.ruler li::before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -30,7 +30,7 @@ li::before {
   margin-right: 5px;
 }
 
-li.divisible-by-five::before {
+.ruler li.divisible-by-five::before {
   width: 30px;
   transform: scaleY(2); /* Scales height smoothly */
   background-color: #2f4f4f5e;

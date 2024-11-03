@@ -6,9 +6,11 @@ function App() {
   return (
     <>
       <NavBar></NavBar>
-      <div className="content">
+      <main className="content">
+        <h1>Timeline</h1>
+
         <Timeline></Timeline>
-      </div>
+      </main>
     </>
   );
 }

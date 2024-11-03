@@ -1,5 +1,10 @@
 nav {
-  background-color: var(--charcoal);
-  height: 20px;
-  width: 100%;
+  background-color: green;
+  margin-top: 0px;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
 }

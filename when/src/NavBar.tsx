@@ -1,7 +1,15 @@
 import "./NavBar.css";
 
 function NavBar() {
-  return <nav></nav>;
+  return (
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+  );
 }
 
 export default NavBar;
