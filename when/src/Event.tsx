@@ -30,9 +30,6 @@ function Event({
       style={{ "--event-height": `${height}px` } as React.CSSProperties}
     >
       <p className="eventname">{eventName}</p>
-      <p className="date">{date.toDateString()}</p>
-      <p className="location">{location}</p>
-      <p className="description">{description}</p>
     </div>
   );
 }

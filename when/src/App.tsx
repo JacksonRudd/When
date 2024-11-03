@@ -6,9 +6,6 @@ import Timeline from "./Timeline";
 function App() {
   return (
     <>
-      <NavBar></NavBar>
-      <h1>Timeline</h1>
-
       <Sidepanel></Sidepanel>
       <Timeline></Timeline>
     </>

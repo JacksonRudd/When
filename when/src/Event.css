@@ -1,10 +1,13 @@
 .event {
-  background: white;
+  background: var(--outer-space);
   position: absolute;
   top: var(--event-height);
+  padding: 20px;
+  font-family: "Mulish";
+  color: var(--antiflash-white);
+  font-size: 2rem;
 
   left: 100px;
-  border-radius: 5px;
 }
 
 .event::before {
@@ -13,6 +16,7 @@
   top: 0;
   left: -100px;
   width: 100px;
-  height: 1px;
-  background: black;
+  height: 4px;
+  background: inherit;
+  /* add a circle at the end */
 }

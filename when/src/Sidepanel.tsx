@@ -5,6 +5,8 @@ function SidePandel() {
 
   return (
     <div className="sidepanel">
+      <h1>Timeline</h1>
+
       <div className="options">
         <button>Add Event</button>
       </div>
