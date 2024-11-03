@@ -1,17 +1,38 @@
 import "./Event.css";
 
-function Event() {
-  // add constants for the event name, date, and location and  description
-  // for now let's make a simple event, and go with the first fall of the berlin wall
-  const eventName = "Fall of the Berlin Wall";
-  const eventDate = new Date("1989-11-09");
-  const eventLocation = "Berlin, Germany";
-  const eventDescription =
-    "The Berlin Wall was a guarded concrete barrier that physically and ideologically divided Berlin from 1961 to 1989. Construction of the wall was commenced by the German Democratic Republic on 13 August 1961. The Wall cut off West Berlin from surrounding East Germany, including East Berlin. The fall of the Berlin Wall was the pivotal event that led to the end of the Cold War.";
+interface EventProps {
+  name: string;
+  date: Date;
+  location: string;
+  description: string;
+  pixelsPerYear: number;
+  start_year: Date;
+}
+
+function Event({
+  name: eventName,
+  date,
+  location,
+  description,
+  pixelsPerYear,
+  start_year,
+}: EventProps) {
+  // set the height of the element to be the difference between the start and end date in years times pixels per year
+  // set the width to be 100%
+  const days_diff = Math.floor(
+    (date.getTime() - start_year.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  const height = (days_diff * pixelsPerYear) / 365 + pixelsPerYear / 2;
 
   return (
-    <div className="event">
-      <h2>{eventName}</h2>
+    <div
+      className="event"
+      style={{ "--event-height": `${height}px` } as React.CSSProperties}
+    >
+      <p className="eventname">{eventName}</p>
+      <p className="date">{date.toDateString()}</p>
+      <p className="location">{location}</p>
+      <p className="description">{description}</p>
     </div>
   );
 }

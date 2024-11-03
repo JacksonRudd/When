@@ -1,9 +1,18 @@
 .event {
   background: white;
   position: absolute;
-  /*  top should be set to 50 * 78 */
-  top: 3900px;
+  top: var(--event-height);
 
   left: 100px;
   border-radius: 5px;
+}
+
+.event::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 100px;
+  height: 1px;
+  background: black;
 }

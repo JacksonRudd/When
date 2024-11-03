@@ -1,6 +1,6 @@
 .timeline {
-  width: 800px;
-  height: 800px;
+  width: 80%;
+  height: auto;
   overflow-y: scroll;
   font: 16px/1.5 "Roboto", sans-serif;
   background-color: lightcyan;
@@ -8,5 +8,4 @@
   flex-direction: row;
   position: relative;
   scrollbar-width: none;
-  border-left: 4px solid #2f4f4f5e;
 }

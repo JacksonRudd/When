@@ -1,6 +1,11 @@
 .ruler {
-  width: 20%;
+  width: 100px;
   margin: 0px;
+  padding: 0px;
+  /* border-right: 4px solid #2f4f4f5e; */
+  /* I had the above border, but when I scrolled it disappeared */
+  /* I added the below border to fix the above issue */
+  border-right: 4px solid #2f4f4f5e;
 }
 ol {
   margin: 0;
@@ -12,7 +17,7 @@ ol {
   font-family: "Mulish";
   height: 50px;
   color: #2f4f4f;
-  text-align: left;
+  text-align: right;
   line-height: 50px;
 }
 
@@ -21,19 +26,19 @@ ol {
   font-weight: bold;
 }
 
-.ruler li::before {
+.ruler li::after {
   content: "";
   display: inline-block;
   width: 20px;
   height: 2px;
   background-color: #2f4f4f5e;
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
-.ruler li.divisible-by-five::before {
+.ruler li.divisible-by-five::after {
   width: 30px;
   transform: scaleY(2); /* Scales height smoothly */
   background-color: #2f4f4f5e;
   font-weight: bold;
-  margin-right: 5px;
+  margin-left: 5px;
 }
