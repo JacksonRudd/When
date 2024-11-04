@@ -1,7 +1,4 @@
-import { useReducer } from "react";
 import "./Sidepanel.css";
-import eventReducer from "./models/reducer";
-import initialStoryState from "./models/intial_state";
 import EventModel from "./models/EventModel";
 
 function add_icon() {
@@ -40,7 +37,7 @@ interface SidePanelProps {
   dispatch: React.Dispatch<any>;
 }
 
-function SidePandel({ dispatch }: SidePanelProps) {
+function SidePanel({ dispatch }: SidePanelProps) {
   //   has a button for adding an event
 
   const handelAddEvent = () => {
@@ -65,4 +62,4 @@ function SidePandel({ dispatch }: SidePanelProps) {
   );
 }
 
-export default SidePandel;
+export default SidePanel;
