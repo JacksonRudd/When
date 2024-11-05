@@ -12,10 +12,10 @@ interface timelineProps {
 function Timeline({ storyState }: timelineProps) {
   // get the first date (or 1905) then pipe to subtract five years
   const startYear =
-    (getEarliestEvent(storyState)?.date.getFullYear() || 1905) - 5;
+    (getEarliestEvent(storyState)?.date.getFullYear() || 1905) - 10;
   const start = new Date(startYear, 0, 1);
   const endYear =
-    (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 5;
+    (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 10;
   const end = new Date(endYear, 0, 1);
   const pixelsPerYear = 50;
   const eventModels = storyState.events;
