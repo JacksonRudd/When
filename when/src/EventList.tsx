@@ -23,6 +23,7 @@ function EventList({ start, end, pixelsPerYear, eventModels }: EventListProps) {
     >
       {eventModels.map((eventModel) => (
         <Event
+          key={eventModel.name}
           name={eventModel.name}
           date={eventModel.date}
           location={eventModel.location}

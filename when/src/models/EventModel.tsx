@@ -1,6 +1,5 @@
 interface EventModel {
-  name: string;
-  id: string;
+  name: string; // should be unique
   date: Date;
   location: string;
   description: string;

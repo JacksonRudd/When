@@ -1,6 +1,7 @@
+import { useState } from "react";
+import EventForm from "./EventForm";
 import "./Sidepanel.css";
 import EventModel from "./models/EventModel";
-
 function add_icon() {
   return (
     <svg
@@ -38,25 +39,24 @@ interface SidePanelProps {
 }
 
 function SidePanel({ dispatch }: SidePanelProps) {
-  //   has a button for adding an event
+  const [showForm, setShowForm] = useState(false);
 
-  const handelAddEvent = () => {
-    console.log("add event");
-    const payload: EventModel = {
-      id: "1",
-      name: "test",
-      date: new Date("1915"),
-      location: "test",
-      description: "test",
-    };
-    dispatch({ type: "ADD_EVENT", payload: payload });
+  const handelShowEvent = () => {
+    setShowForm(!showForm);
+  };
+
+  const onSubmit = (eventModel: EventModel) => {
+    console.log(eventModel);
+    dispatch({ type: "ADD_EVENT", payload: eventModel });
+    setShowForm(false);
   };
 
   return (
     <div className="sidepanel">
       <div className="options">
-        <button onClick={handelAddEvent}>{add_icon()}</button>
+        <button onClick={handelShowEvent}>{add_icon()}</button>
         <button>{menu_icon()}</button>
+        {showForm && <EventForm onSubmit={onSubmit}></EventForm>}
       </div>
     </div>
   );

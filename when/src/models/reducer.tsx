@@ -16,13 +16,15 @@ const eventReducer = (state: StoryModel, action: EventAction) => {
       return {
         ...state,
         events: state.events.map((event) =>
-          event.id === action.payload.id ? action.payload : event
+          event.name === action.payload.name ? action.payload : event
         ),
       };
     case "DELETE_EVENT":
       return {
         ...state,
-        events: state.events.filter((event) => event.id !== action.payload.id),
+        events: state.events.filter(
+          (event) => event.name !== action.payload.name
+        ),
       };
     default:
       return state;
