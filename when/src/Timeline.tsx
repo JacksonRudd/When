@@ -1,5 +1,8 @@
 import EventList from "./EventList";
-import StoryModel from "./models/StoryModel";
+import StoryModel, {
+  getEarliestEvent,
+  getMostRecentEvent,
+} from "./models/StoryModel";
 import Ruler from "./Ruler";
 import "./Timeline.css";
 
@@ -7,14 +10,18 @@ interface timelineProps {
   storyState: StoryModel;
 }
 function Timeline({ storyState }: timelineProps) {
-  // subtract five years from the first event to give it some space to render
-  const start = new Date("1900");
-  const end = new Date("2020");
+  // get the first date (or 1905) then pipe to subtract five years
+  const startYear =
+    (getEarliestEvent(storyState)?.date.getFullYear() || 1905) - 5;
+  const start = new Date(startYear, 0, 1);
+  const endYear =
+    (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 5;
+  const end = new Date(endYear, 0, 1);
   const pixelsPerYear = 50;
   const eventModels = storyState.events;
   return (
     <div className="timeline">
-      <Ruler></Ruler>
+      <Ruler start={start} end={end}></Ruler>
       <EventList
         start={start}
         end={end}

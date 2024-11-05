@@ -1,12 +1,22 @@
 import "./Ruler.css";
 
-function Ruler() {
+interface RulerProps {
+  start: Date;
+  end: Date;
+}
+function Ruler({ start, end }: RulerProps) {
+  const length = end.getFullYear() - start.getFullYear() + 1;
   return (
     <div className="ruler">
       <ol>
-        {Array.from({ length: 121 }, (_, i) => (
-          <li key={i} className={i % 5 === 0 ? "divisible-by-five" : ""}>
-            {1900 + i}
+        {Array.from({ length: length }, (_, i) => (
+          <li
+            key={i}
+            className={
+              (start.getFullYear() + i) % 5 === 0 ? "divisible-by-five" : ""
+            }
+          >
+            {start.getFullYear() + i}
           </li>
         ))}
       </ol>

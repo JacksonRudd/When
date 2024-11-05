@@ -4,10 +4,6 @@ import StoryModel from "./StoryModel";
 const eventReducer = (state: StoryModel, action: EventAction) => {
   switch (action.type) {
     case "ADD_EVENT":
-      console.log({
-        ...state,
-        events: [...state.events, action.payload],
-      });
       return {
         ...state,
         events: [...state.events, action.payload],
