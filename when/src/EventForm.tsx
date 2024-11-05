@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EventModel from "./models/EventModel";
+import "./EventForm.css";
 
 interface EventFormProps {
   onSubmit: (event: EventModel) => void;
