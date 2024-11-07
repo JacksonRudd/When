@@ -12,7 +12,8 @@ function EventForm({ onSubmit }: EventFormProps) {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleAddEvent = () => {
+  const handleAddEvent = (e: React.FormEvent) => {
+    e.preventDefault();
     const payload: EventModel = {
       name: name,
       date: new Date(date),
@@ -22,48 +23,56 @@ function EventForm({ onSubmit }: EventFormProps) {
     onSubmit(payload);
   };
 
+  const uniqueSuffix = Date.now().toString();
+
   return (
-    <div className="event-form">
+    <form
+      className="event-form"
+      autoComplete="new-password"
+      onSubmit={handleAddEvent}
+    >
       <label htmlFor="name">Name</label>
       <input
         type="text"
         id="name"
-        name="name"
+        name={`name-${uniqueSuffix}`}
         value={name}
         onChange={(e) => setName(e.target.value)}
+        autoComplete="new-password"
       />
 
       <label htmlFor="date">Date</label>
       <input
         type="date"
         id="date"
-        name="date"
+        name={`date-${uniqueSuffix}`}
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        autoComplete="new-password"
       />
 
       <label htmlFor="location">Location</label>
       <input
         type="text"
         id="location"
-        name="location"
+        name={`location-${uniqueSuffix}`}
         value={location}
         onChange={(e) => setLocation(e.target.value)}
+        autoComplete="new-password"
       />
 
       <label htmlFor="description">Description</label>
       <input
         type="text"
         id="description"
-        name="description"
+        name={`description-${uniqueSuffix}`}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        autoComplete="new-password"
       />
 
-      <button type="button" onClick={handleAddEvent}>
-        Submit
-      </button>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 

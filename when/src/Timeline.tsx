@@ -15,7 +15,7 @@ function Timeline({ storyState }: timelineProps) {
     (getEarliestEvent(storyState)?.date.getFullYear() || 1905) - 10;
   const start = new Date(startYear, 0, 1);
   const endYear =
-    (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 10;
+    (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 50;
   const end = new Date(endYear, 0, 1);
   const pixelsPerYear = 50;
   const eventModels = storyState.events;
