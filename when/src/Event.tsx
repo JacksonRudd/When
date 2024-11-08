@@ -36,7 +36,6 @@ function Event({
     pixelsPerYear / 2 +
     4 +
     percent_of_last_year * pixelsPerYear;
-  console.log("height", height);
 
   return (
     <div
