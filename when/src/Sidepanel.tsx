@@ -2,6 +2,7 @@ import { useState } from "react";
 import EventForm from "./EventForm";
 import "./Sidepanel.css";
 import EventModel from "./models/EventModel";
+import Search from "./Search";
 function add_icon() {
   return (
     <svg
@@ -34,19 +35,40 @@ function menu_icon() {
   );
 }
 
+function magnifying_glass_icon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="11" cy="11" r="8" stroke="#A9A9A9" strokeWidth="2" />
+      <line x1="16" y1="16" x2="21" y2="21" stroke="#A9A9A9" strokeWidth="2" />
+    </svg>
+  );
+}
+
 interface SidePanelProps {
   dispatch: React.Dispatch<any>;
 }
 
 function SidePanel({ dispatch }: SidePanelProps) {
   const [showForm, setShowForm] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
-  const handelShowEvent = () => {
+  const handleShowEvent = () => {
     setShowForm(!showForm);
+    setShowSearch(false);
+  };
+
+  const handleSearchEvent = () => {
+    setShowSearch(!showSearch);
+    setShowForm(false);
   };
 
   const onSubmit = (eventModel: EventModel) => {
-    console.log(eventModel);
     dispatch({ type: "ADD_EVENT", payload: eventModel });
     setShowForm(false);
   };
@@ -54,9 +76,11 @@ function SidePanel({ dispatch }: SidePanelProps) {
   return (
     <div className="sidepanel">
       <div className="options">
-        <button onClick={handelShowEvent}>{add_icon()}</button>
+        <button onClick={handleShowEvent}>{add_icon()}</button>
+        <button onClick={handleSearchEvent}>{magnifying_glass_icon()}</button>
         <button>{menu_icon()}</button>
         {showForm && <EventForm onSubmit={onSubmit}></EventForm>}
+        {showSearch && <Search onClick={onSubmit}></Search>}
       </div>
     </div>
   );

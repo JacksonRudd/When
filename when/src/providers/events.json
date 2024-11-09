@@ -4,7 +4,7 @@
     "event_description": "Development of one of the world's earliest urban civilizations",
     "date": "Unknown",
     "location": "Indus Valley",
-    "year": "2600 BC",
+    "year": "-2600",
     "month": "Unknown",
     "country": "India"
   },
@@ -13,7 +13,7 @@
     "event_description": "Rigvedic tribes consolidated their control over the region",
     "date": "Unknown",
     "location": "Punjab",
-    "year": "1400 BC",
+    "year": "-1400",
     "month": "Unknown",
     "country": "India"
   },
@@ -4576,7 +4576,7 @@
     "event_description": "Introduction of one of the earliest written legal codes",
     "date": "Unknown",
     "location": "Babylon",
-    "year": " 1754 BC ",
+    "year": "-1754",
     "month": "Unknown",
     "country": "Babylon"
   },
@@ -6745,7 +6745,7 @@
     "event_description": "Creation of iconic Neolithic monument",
     "date": "Unknown",
     "location": "Salisbury Plain",
-    "year": "2500 BC",
+    "year": "-2500",
     "month": "Unknown",
     "country": "UK"
   },
@@ -7717,7 +7717,7 @@
     "event_description": "Early Phoenician traders establish contacts, leading to cultural and economic exchanges",
     "date": "Unknown",
     "location": "Gadir (C\u00e1diz)",
-    "year": "1100 BC",
+    "year": "-1100",
     "month": "Unknown",
     "country": "Spain"
   },
@@ -7735,7 +7735,7 @@
     "event_description": "One of the oldest continuously inhabited cities in Western Europe",
     "date": "Unknown",
     "location": "Gadir (C\u00e1diz)",
-    "year": "1100 BC",
+    "year": "-1100",
     "month": "Unknown",
     "country": "Spain"
   },
@@ -9148,7 +9148,7 @@
     "event_description": "Development of the first major civilization in Mexico",
     "date": "Unknown",
     "location": "Gulf Coast",
-    "year": "1400 BC",
+    "year": "-1400",
     "month": "Unknown",
     "country": "Mexico"
   },
