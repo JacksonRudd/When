@@ -2,9 +2,12 @@
 
 - https://whenwas.netlify.app/
 
-## Backlog
+## Next
 
 - The year spacing should be adjustable
+
+## Backlog
+
 - When I add an event I should scroll to that part of the page.
 - events shouldn't overlap
 - Event hover
