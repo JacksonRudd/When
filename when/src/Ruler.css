@@ -13,10 +13,10 @@ ol {
 .ruler li {
   font-size: 0.625em;
   font-family: "Mulish";
-  height: 50px;
+  height: var(--pixelsPerYear);
   color: #2f4f4f;
   text-align: right;
-  line-height: 50px;
+  line-height: var(--pixelsPerYear);
 }
 
 .ruler .divisible-by-five {
