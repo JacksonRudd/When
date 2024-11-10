@@ -10,7 +10,28 @@ describe("get_event_by_name", () => {
     );
 
     expect(event.date).toEqual(new Date(-2600, 0, 1));
+    expect(event.date.getFullYear()).toBe(-2600);
     expect(event?.location).toBe("Indus Valley");
+  });
+});
+
+describe("get_event_by_name", () => {
+  it("Handles year 0", () => {
+    const eventName = "Introduction of Buddhism to China";
+    const event = get_event_by_name(eventName);
+    expect(event?.name).toBe(eventName);
+
+    expect(event.date.getFullYear()).toBe(0);
+  });
+});
+
+describe("get_event_by_name", () => {
+  it("Handles year 0", () => {
+    const eventName = "Construction of the Great Wall";
+    const event = get_event_by_name(eventName);
+    expect(event?.name).toBe(eventName);
+
+    expect(event.date.getFullYear()).toBe(600);
   });
 });
 

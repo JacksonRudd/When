@@ -22,7 +22,14 @@ function EventList({
   dispatch,
 }: EventListProps) {
   const years_diff = end.getFullYear() - start.getFullYear();
-  const height = (years_diff + 1) * pixelsPerTick;
+  console.log("start", start);
+  console.log("end", end);
+  console.log("years_diff", years_diff);
+  const tickPerYears = 1 / yearPerTick;
+  console.log("tickPerYears", tickPerYears);
+  console.log("pixelsPerTick", pixelsPerTick);
+  const height =
+    (years_diff + 1) * tickPerYears * pixelsPerTick + pixelsPerTick / 2;
 
   function onDrag(eventView: EventView, newX: number): void {
     const message: EventAction = {
@@ -35,10 +42,15 @@ function EventList({
   return (
     <div
       className="eventlist"
-      style={{ "--eventlist-height": `${height}px` } as React.CSSProperties}
+      style={
+        {
+          "--eventlist-height": `${height}px`,
+        } as React.CSSProperties
+      }
     >
       {eventViews.map((eventView) => (
         <Event
+          key={eventView.name}
           eventView={eventView}
           pixelsPerTick={pixelsPerTick}
           yearPerTick={yearPerTick}

@@ -13,14 +13,21 @@ interface timelineProps {
 function Timeline({ storyState, dispatch }: timelineProps) {
   // get the first date (or 1905) then pipe to subtract five years
 
-  const startYear =
-    (getEarliestEvent(storyState)?.date.getFullYear() || 1905) - 10;
-  const endYear =
-    (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 50;
+  let startYear;
+  let endYear;
+  const pageHeight = window.innerHeight;
+
+  if (storyState.events.length === 0) {
+    startYear = 1905;
+    endYear = 2020;
+  } else {
+    startYear = getEarliestEvent(storyState)?.date.getFullYear() - 10;
+    endYear = getMostRecentEvent(storyState)?.date.getFullYear() + 50;
+  }
 
   const year_delta = endYear - startYear;
 
-  const pixelsPerYear = 1000 / year_delta; // found empirically
+  const pixelsPerYear = pageHeight / year_delta;
   function yearsPerTickToPixelsPerYear(pixelsPerYear: number): number {
     const index = 50 / pixelsPerYear;
     const options = [
@@ -38,7 +45,11 @@ function Timeline({ storyState, dispatch }: timelineProps) {
     0,
     1
   );
-  const end = new Date(endYear, 0, 1);
+  const end = new Date(
+    endYear - (endYear % yearsPerTick) + 4 * yearsPerTick,
+    0,
+    1
+  );
   const pixelsPerTick = pixelsPerYear * yearsPerTick; // should have values between 50 and 100
 
   return (

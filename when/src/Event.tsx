@@ -11,7 +11,8 @@ interface EventProps {
 }
 
 function getDayOfYear(date: Date): number {
-  const start = new Date(date.getFullYear(), 0, 1);
+  const start = new Date(1000, 0, 1);
+  start.setFullYear(date.getFullYear());
   const diff = date.getTime() - start.getTime();
   return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
 }
@@ -25,7 +26,7 @@ function Event({
 }: EventProps) {
   const [dragging, setDragging] = useState(false);
   const [originalMouseX, setOriginalMouseX] = useState(0);
-
+  console.log("eventView", eventView);
   const years_diff = eventView.date.getFullYear() - start_year.getFullYear();
   const percent_of_last_year = getDayOfYear(eventView.date) / 365;
   const tickPerYear = 1 / yearPerTick;
@@ -33,7 +34,8 @@ function Event({
     (years_diff + percent_of_last_year) * tickPerYear * pixelsPerTick +
     pixelsPerTick / 2 +
     4;
-
+  console.log("percent", percent_of_last_year, getDayOfYear(eventView.date));
+  console.log("height", height);
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setDragging(true);
@@ -43,7 +45,6 @@ function Event({
   const handleMouseMove = (e: MouseEvent) => {
     if (dragging) {
       const newX = eventView.x + (e.x - originalMouseX);
-      console.log(newX);
       onUpdateX(eventView, newX); // Call the prop to update x position
     }
   };

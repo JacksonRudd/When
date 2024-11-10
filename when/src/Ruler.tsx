@@ -7,7 +7,9 @@ interface RulerProps {
   yearsPerTick: number;
 }
 function Ruler({ start, end, pixelsPerTick, yearsPerTick }: RulerProps) {
-  const length = end.getFullYear() - start.getFullYear() + 1;
+  const length = Math.floor(
+    (end.getFullYear() - start.getFullYear()) / yearsPerTick
+  );
   // I want to set a var in the css for pixelsPerTick
   const rulerStyle = document.createElement("style");
   rulerStyle.innerHTML = `:root { --pixelsPerTick: ${pixelsPerTick}px; }`;

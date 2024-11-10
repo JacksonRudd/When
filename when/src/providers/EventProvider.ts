@@ -20,7 +20,7 @@ type Events = {
 const typedEvents: Events = events;
 
 function event_data_to_model(event_data: EventDataDetails): EventModel {
-  const year = parseInt(event_data.year) || 0;
+  let year = parseInt(event_data.year);
   const month = parseInt(event_data.month) - 1 || 0; // Month needs to be 0-based
   const day = parseInt(event_data.date) || 1;
 
@@ -29,7 +29,11 @@ function event_data_to_model(event_data: EventDataDetails): EventModel {
     throw new Error("Invalid date parts in event_data.");
   }
 
+  // Handle BCE by adjusting year for Date.UTC compatibility
   const date = new Date(year, month, day);
+
+  // Manually adjust the year back for BCE dates
+  if (year <= 0) date.setUTCFullYear(year);
 
   return {
     name: event_data.event_name,
