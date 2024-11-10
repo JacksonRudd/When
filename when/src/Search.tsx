@@ -32,7 +32,7 @@ function Search({ onClick }: SearchProps) {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <li>
+      <ol>
         {get_search_results(searchText).map((event) => (
           <button onClick={() => handle_click(event)} key={event.name}>
             <b>{event.name}</b>
@@ -40,7 +40,7 @@ function Search({ onClick }: SearchProps) {
             <p>{event.location}</p>
           </button>
         ))}
-      </li>
+      </ol>
     </div>
   );
 }
