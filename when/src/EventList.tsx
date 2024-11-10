@@ -18,13 +18,10 @@ function EventList({
   eventModels,
   yearPerTick,
 }: EventListProps) {
-  // set the height of the element to be the difference between the start and end date in years times pixels per year
-  // set the width to be 100%
-
   const years_diff = end.getFullYear() - start.getFullYear();
   const height = (years_diff + 1) * pixelsPerTick;
 
-  const colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink"];
+  const colors = ["red", "blue", "green", "purple", "orange", "pink"];
   function eventNameToColor(eventName: string): string {
     return colors[
       Math.abs(
@@ -49,6 +46,10 @@ function EventList({
           yearPerTick={yearPerTick}
           start_year={start}
           color={eventNameToColor(eventModel.name)}
+          eventX={
+            // random number between 200 and 1000 for the x position of the event
+            Math.floor(Math.random() * 1000) + 0
+          }
         />
       ))}
     </div>

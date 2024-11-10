@@ -9,6 +9,7 @@ interface EventProps {
   start_year: Date;
   yearPerTick: number;
   color: string;
+  eventX: number;
 }
 
 function getDayOfYear(date: Date): number {
@@ -31,12 +32,11 @@ function Event({
   start_year,
   yearPerTick,
   color,
+  eventX,
 }: EventProps) {
   const years_diff = date.getFullYear() - start_year.getFullYear();
   const percent_of_last_year = getDayOfYear(date) / 365;
-
   const tickPerYear = 1 / yearPerTick;
-
   const height =
     (years_diff + percent_of_last_year) * tickPerYear * pixelsPerTick +
     pixelsPerTick / 2 +
@@ -48,7 +48,7 @@ function Event({
       style={
         {
           "--event-height": `${height - 75}px`,
-          "--event-x": `${300}px`,
+          "--event-x": `${eventX}px`,
           "--event-color": color,
         } as React.CSSProperties
       }
