@@ -4,6 +4,9 @@ import StoryModel from "../views/StoryModel";
 const eventReducer = (state: StoryModel, action: EventAction) => {
   switch (action.type) {
     case "ADD_EVENT":
+      if (state.events.find((event) => event.name === action.payload.name)) {
+        return state;
+      }
       return {
         ...state,
         events: [...state.events, action.payload],
