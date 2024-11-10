@@ -76,14 +76,19 @@ function Event({
           "--event-x": `${eventView.x}px`, // Reflects the updated x position
           "--z-index": 9999999 - eventView.x,
           "--event-color": eventView.color,
+          "--info-display": dragging ? "none" : "block",
         } as React.CSSProperties
       }
       onMouseDown={handleMouseDown}
     >
       <p className="eventname">{eventView.name}</p>
       <div className="eventinfo">
-        <p>{eventView.description}</p>
-        <p>{eventView.location}</p>
+        <div className="eventtext">
+          <p>{eventView.description}</p>
+        </div>
+        <div className="eventtext">
+          <p>{eventView.location}</p>
+        </div>
       </div>
     </div>
   );

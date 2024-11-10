@@ -4,12 +4,13 @@
 
 ## Next
 
-- Shouldn't be able to add the same events twice.
+- autozoom is not working great
 
 ## Backlog
 
-- I can click and drag the length of an event
-- Event hover
-  - Also the description and location should be visible
-  - The event should come to forefront
+- timeline is too long
 - I can't get autofill to stop showing up
+- Make sidepanel collapseable
+- We need more events
+- save a timeline
+- doesn't work on different screen sizes

@@ -76,6 +76,25 @@
   color: var(--outer-space);
   font-weight: bold;
   margin-bottom: 10px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 99999999;
+  background: grey;
+  color: inherit;
+  font-size: small;
+}
+
+.event:hover .eventinfo {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  height: auto;
+}
+
+.eventtext {
+  padding-left: 10px;
 }
 
 /* fun stuff */
