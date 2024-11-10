@@ -7,7 +7,7 @@ interface EventListProps {
   start: Date;
   end: Date;
   pixelsPerTick: number;
-  eventModels: EventView[];
+  eventViews: EventView[];
   yearPerTick: number;
 }
 
@@ -15,7 +15,7 @@ function EventList({
   start,
   end,
   pixelsPerTick,
-  eventModels,
+  eventViews,
   yearPerTick,
 }: EventListProps) {
   const years_diff = end.getFullYear() - start.getFullYear();
@@ -26,18 +26,12 @@ function EventList({
       className="eventlist"
       style={{ "--eventlist-height": `${height}px` } as React.CSSProperties}
     >
-      {eventModels.map((eventModel) => (
+      {eventViews.map((eventView) => (
         <Event
-          key={eventModel.name}
-          name={eventModel.name}
-          date={eventModel.date}
-          location={eventModel.location}
-          description={eventModel.description}
+          eventView={eventView}
           pixelsPerTick={pixelsPerTick}
           yearPerTick={yearPerTick}
           start_year={start}
-          color={eventModel.color}
-          eventX={eventModel.x}
         />
       ))}
     </div>

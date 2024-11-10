@@ -1,15 +1,11 @@
 import "./Event.css";
+import EventView from "./views/EventView";
 
 interface EventProps {
-  name: string;
-  date: Date;
-  location: string;
-  description: string;
-  pixelsPerTick: number;
+  eventView: EventView;
   start_year: Date;
+  pixelsPerTick: number;
   yearPerTick: number;
-  color: string;
-  eventX: number;
 }
 
 function getDayOfYear(date: Date): number {
@@ -24,18 +20,13 @@ function getDayOfYear(date: Date): number {
 }
 
 function Event({
-  name: eventName,
-  date,
-  location,
-  description,
+  eventView,
   pixelsPerTick,
   start_year,
   yearPerTick,
-  color,
-  eventX,
 }: EventProps) {
-  const years_diff = date.getFullYear() - start_year.getFullYear();
-  const percent_of_last_year = getDayOfYear(date) / 365;
+  const years_diff = eventView.date.getFullYear() - start_year.getFullYear();
+  const percent_of_last_year = getDayOfYear(eventView.date) / 365;
   const tickPerYear = 1 / yearPerTick;
   const height =
     (years_diff + percent_of_last_year) * tickPerYear * pixelsPerTick +
@@ -48,16 +39,16 @@ function Event({
       style={
         {
           "--event-height": `${height - 75}px`,
-          "--event-x": `${eventX}px`,
-          "--event-color": color,
+          "--event-x": `${eventView.x}px`,
+          "--event-color": eventView.color,
         } as React.CSSProperties
       }
     >
-      <p className="eventname">{eventName}</p>
+      <p className="eventname">{eventView.name}</p>
       {/* add description an location on hover in a div that starts hidden*/}
       <div className="eventinfo">
-        <p>{description}</p>
-        <p>{location}</p>
+        <p>{eventView.description}</p>
+        <p>{eventView.location}</p>
       </div>
     </div>
   );

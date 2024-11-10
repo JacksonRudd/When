@@ -52,7 +52,7 @@ function Timeline({ storyState }: timelineProps) {
         start={start}
         end={end}
         pixelsPerTick={pixelsPerTick}
-        eventModels={storyState.events}
+        eventViews={storyState.events}
         yearPerTick={yearsPerTick}
       ></EventList>
     </div>
