@@ -12,26 +12,20 @@ interface timelineProps {
 }
 function Timeline({ storyState }: timelineProps) {
   // get the first date (or 1905) then pipe to subtract five years
-  const [pixelsPerYear, setPixelsPerYear] = useState(50);
-
-  const handleZoom = (e: React.WheelEvent<HTMLDivElement>) => {
-    console.log("zooming", e.deltaY);
-    if (e.deltaY < 0) {
-      setPixelsPerYear(pixelsPerYear + 1);
-    } else {
-      setPixelsPerYear(pixelsPerYear - 1);
-    }
-  };
 
   const startYear =
     (getEarliestEvent(storyState)?.date.getFullYear() || 1905) - 10;
-  const start = new Date(1000, 0, 1);
   const endYear =
     (getMostRecentEvent(storyState)?.date.getFullYear() || 1995) + 50;
-  const end = new Date(endYear, 0, 1);
+
+  const year_delta = endYear - startYear;
+
+  const pixelsPerYear = 1000 / year_delta; // found empirically
   function yearsPerTickToPixelsPerYear(pixelsPerYear: number): number {
     const index = 50 / pixelsPerYear;
-    const options = [1, 2, 5, 10, 20, 50, 100, 200];
+    const options = [
+      1, 2, 5, 10, 20, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000,
+    ];
     const closest = options.reduce((prev, curr) =>
       Math.abs(curr - index) < Math.abs(prev - index) ? curr : prev
     );
@@ -39,6 +33,12 @@ function Timeline({ storyState }: timelineProps) {
     return closest;
   }
   const yearsPerTick = yearsPerTickToPixelsPerYear(pixelsPerYear); // should have values of 1, 5, 10, 20, 50, 100
+  const start = new Date(
+    startYear - (startYear % yearsPerTick) - 2 * yearsPerTick,
+    0,
+    1
+  );
+  const end = new Date(endYear, 0, 1);
   const pixelsPerTick = pixelsPerYear * yearsPerTick; // should have values between 50 and 100
   const eventModels = storyState.events;
   return (
