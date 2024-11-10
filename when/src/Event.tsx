@@ -74,6 +74,7 @@ function Event({
         {
           "--event-height": `${height - 75}px`,
           "--event-x": `${eventView.x}px`, // Reflects the updated x position
+          "--z-index": 9999999 - eventView.x,
           "--event-color": eventView.color,
         } as React.CSSProperties
       }
