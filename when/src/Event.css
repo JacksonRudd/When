@@ -29,6 +29,7 @@
   /* Hover effect */
   transform: scale(1.05); /* Slight scale-up on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  z-index: 10;
 }
 
 /* This creates a horizontal line that hits the timeline */
