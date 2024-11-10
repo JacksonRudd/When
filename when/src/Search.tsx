@@ -13,6 +13,9 @@ function Search({ onClick }: SearchProps) {
   const [searchText, setSearchText] = useState("");
 
   function get_search_results(searchText: string): EventModel[] {
+    if (searchText === "") {
+      return [];
+    }
     return get_events_by_substring(searchText);
   }
 
