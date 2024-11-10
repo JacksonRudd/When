@@ -6,16 +6,23 @@ import EventModel from "./models/EventModel";
 interface EventListProps {
   start: Date;
   end: Date;
-  pixelsPerYear: number;
+  pixelsPerTick: number;
   eventModels: EventModel[];
+  yearPerTick: number;
 }
 
-function EventList({ start, end, pixelsPerYear, eventModels }: EventListProps) {
+function EventList({
+  start,
+  end,
+  pixelsPerTick,
+  eventModels,
+  yearPerTick,
+}: EventListProps) {
   // set the height of the element to be the difference between the start and end date in years times pixels per year
   // set the width to be 100%
 
   const years_diff = end.getFullYear() - start.getFullYear();
-  const height = (years_diff + 1) * pixelsPerYear;
+  const height = (years_diff + 1) * pixelsPerTick;
   return (
     <div
       className="eventlist"
@@ -28,7 +35,8 @@ function EventList({ start, end, pixelsPerYear, eventModels }: EventListProps) {
           date={eventModel.date}
           location={eventModel.location}
           description={eventModel.description}
-          pixelsPerYear={pixelsPerYear}
+          pixelsPerTick={pixelsPerTick}
+          yearPerTick={yearPerTick}
           start_year={start}
         />
       ))}

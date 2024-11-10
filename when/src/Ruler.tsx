@@ -3,25 +3,29 @@ import "./Ruler.css";
 interface RulerProps {
   start: Date;
   end: Date;
-  pixelsPerYear: number;
+  pixelsPerTick: number;
+  yearsPerTick: number;
 }
-function Ruler({ start, end, pixelsPerYear }: RulerProps) {
+function Ruler({ start, end, pixelsPerTick, yearsPerTick }: RulerProps) {
   const length = end.getFullYear() - start.getFullYear() + 1;
-  // I want to set a var in the css for pixelsPerYear
+  // I want to set a var in the css for pixelsPerTick
   const rulerStyle = document.createElement("style");
-  rulerStyle.innerHTML = `:root { --pixelsPerYear: ${pixelsPerYear}px; }`;
+  rulerStyle.innerHTML = `:root { --pixelsPerTick: ${pixelsPerTick}px; }`;
   document.head.appendChild(rulerStyle);
   return (
     <div className="ruler">
       <ol>
         {Array.from({ length: length }, (_, i) => (
           <li
-            key={i}
+            key={i * yearsPerTick}
             className={
-              (start.getFullYear() + i) % 5 === 0 ? "divisible-by-five" : ""
+              (start.getFullYear() + i * yearsPerTick) % (5 * yearsPerTick) ===
+              0
+                ? "divisible-by-five"
+                : ""
             }
           >
-            {start.getFullYear() + i}
+            {start.getFullYear() + i * yearsPerTick}
           </li>
         ))}
       </ol>

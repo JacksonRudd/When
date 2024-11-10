@@ -5,8 +5,9 @@ interface EventProps {
   date: Date;
   location: string;
   description: string;
-  pixelsPerYear: number;
+  pixelsPerTick: number;
   start_year: Date;
+  yearPerTick: number;
 }
 
 function getDayOfYear(date: Date): number {
@@ -25,17 +26,19 @@ function Event({
   date,
   location,
   description,
-  pixelsPerYear,
+  pixelsPerTick,
   start_year,
+  yearPerTick,
 }: EventProps) {
   const years_diff = date.getFullYear() - start_year.getFullYear();
   const percent_of_last_year = getDayOfYear(date) / 365;
 
+  const tickPerYear = 1 / yearPerTick;
+
   const height =
-    years_diff * pixelsPerYear +
-    pixelsPerYear / 2 +
-    4 +
-    percent_of_last_year * pixelsPerYear;
+    (years_diff + percent_of_last_year) * tickPerYear * pixelsPerTick +
+    pixelsPerTick / 2 +
+    4;
 
   return (
     <div

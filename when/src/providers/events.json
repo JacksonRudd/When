@@ -8,6 +8,24 @@
     "month": "Unknown",
     "country": "India"
   },
+  "Millenium": {
+    "event_name": "Millenium",
+    "event_description": "Start of the 1st millennium",
+    "date": "1",
+    "location": "Unknown",
+    "year": "1000",
+    "month": "Unknown",
+    "country": "Unknown"
+  },
+  "Y2k": {
+    "event_name": "Y2k",
+    "event_description": "Y2k bug",
+    "date": "1",
+    "location": "Unknown",
+    "year": "2000",
+    "month": "Unknown",
+    "country": "Unknown"
+  },
   "Battle of the Ten Kings": {
     "event_name": "Battle of the Ten Kings",
     "event_description": "Rigvedic tribes consolidated their control over the region",
