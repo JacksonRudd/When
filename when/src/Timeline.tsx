@@ -5,6 +5,7 @@ import StoryModel, {
 } from "./models/StoryModel";
 import Ruler from "./Ruler";
 import "./Timeline.css";
+import { eventModelToEventModelView } from "./views/EventView";
 
 interface timelineProps {
   storyState: StoryModel;
@@ -31,7 +32,7 @@ function Timeline({ storyState }: timelineProps) {
 
     return closest;
   }
-  const yearsPerTick = yearsPerTickToPixelsPerYear(pixelsPerYear); // should have values of 1, 5, 10, 20, 50, 100
+  const yearsPerTick = yearsPerTickToPixelsPerYear(pixelsPerYear); // should have values of 1, 5, 10, 20, 50, 100 ...
   const start = new Date(
     startYear - (startYear % yearsPerTick) - 2 * yearsPerTick,
     0,
@@ -40,6 +41,7 @@ function Timeline({ storyState }: timelineProps) {
   const end = new Date(endYear, 0, 1);
   const pixelsPerTick = pixelsPerYear * yearsPerTick; // should have values between 50 and 100
   const eventModels = storyState.events;
+
   return (
     <div className="timeline">
       <Ruler
@@ -52,7 +54,7 @@ function Timeline({ storyState }: timelineProps) {
         start={start}
         end={end}
         pixelsPerTick={pixelsPerTick}
-        eventModels={eventModels}
+        eventModels={eventModels.map(eventModelToEventModelView)}
         yearPerTick={yearsPerTick}
       ></EventList>
     </div>
