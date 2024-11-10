@@ -1,12 +1,12 @@
 import EventModel from "../models/EventModel";
 
-interface EventModelView {
+interface EventView {
   name: string; // should be unique
   date: Date;
   location: string;
   description: string;
-  color: string;
   x: number;
+  color: string;
 }
 const colors = ["red", "blue", "green", "purple", "orange", "pink"];
 
@@ -23,7 +23,7 @@ function randomX(): number {
   return Math.floor(Math.random() * 1000);
 }
 
-function eventModelToEventModelView(eventModel: EventModel): EventModelView {
+function eventModelToEventModelView(eventModel: EventModel): EventView {
   return {
     name: eventModel.name,
     date: eventModel.date,
@@ -34,5 +34,5 @@ function eventModelToEventModelView(eventModel: EventModel): EventModelView {
   };
 }
 
-export default EventModelView;
+export default EventView;
 export { eventModelToEventModelView };

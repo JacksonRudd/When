@@ -1,9 +1,9 @@
-import EventModel from "./EventModel";
+import EventView from "./EventView";
 
 interface StoryModel {
   id: string;
   title: string;
-  events: EventModel[];
+  events: EventView[];
 }
 
 const getEarliestEvent = (storyModel: StoryModel) => {

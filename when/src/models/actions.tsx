@@ -1,8 +1,8 @@
-import EventModel from "./EventModel";
+import EventView from "../views/EventView";
 
 type EventAction =
-  | { type: "ADD_EVENT"; payload: EventModel }
-  | { type: "UPDATE_EVENT"; payload: EventModel }
+  | { type: "ADD_EVENT"; payload: EventView }
+  | { type: "UPDATE_EVENT"; payload: EventView }
   | { type: "DELETE_EVENT"; payload: { name: string } };
 
 export default EventAction;

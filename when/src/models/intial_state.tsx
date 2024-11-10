@@ -1,4 +1,4 @@
-import StoryModel from "./StoryModel";
+import StoryModel from "../views/StoryModel";
 
 const initialStoryState: StoryModel = {
   id: "1",

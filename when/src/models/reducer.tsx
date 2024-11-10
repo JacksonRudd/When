@@ -1,5 +1,5 @@
 import EventAction from "./actions";
-import StoryModel from "./StoryModel";
+import StoryModel from "../views/StoryModel";
 
 const eventReducer = (state: StoryModel, action: EventAction) => {
   switch (action.type) {

@@ -3,6 +3,7 @@ import EventForm from "./EventForm";
 import "./Sidepanel.css";
 import EventModel from "./models/EventModel";
 import Search from "./Search";
+import { eventModelToEventModelView } from "./views/EventView";
 function add_icon() {
   return (
     <svg
@@ -69,7 +70,10 @@ function SidePanel({ dispatch }: SidePanelProps) {
   };
 
   const onSubmit = (eventModel: EventModel) => {
-    dispatch({ type: "ADD_EVENT", payload: eventModel });
+    dispatch({
+      type: "ADD_EVENT",
+      payload: eventModelToEventModelView(eventModel),
+    });
     setShowForm(false);
   };
 

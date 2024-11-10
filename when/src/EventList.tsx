@@ -1,13 +1,13 @@
 import React from "react";
 import Event from "./Event";
 import "./EventListStyle.css";
-import EventModelView from "./views/EventView";
+import EventView from "./views/EventView";
 
 interface EventListProps {
   start: Date;
   end: Date;
   pixelsPerTick: number;
-  eventModels: EventModelView[];
+  eventModels: EventView[];
   yearPerTick: number;
 }
 
