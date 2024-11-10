@@ -2,6 +2,7 @@ import React from "react";
 import Event from "./Event";
 import "./EventListStyle.css";
 import EventView from "./views/EventView";
+import EventAction from "./models/actions";
 
 interface EventListProps {
   start: Date;
@@ -9,6 +10,7 @@ interface EventListProps {
   pixelsPerTick: number;
   eventViews: EventView[];
   yearPerTick: number;
+  dispatch: React.Dispatch<any>;
 }
 
 function EventList({
@@ -17,9 +19,18 @@ function EventList({
   pixelsPerTick,
   eventViews,
   yearPerTick,
+  dispatch,
 }: EventListProps) {
   const years_diff = end.getFullYear() - start.getFullYear();
   const height = (years_diff + 1) * pixelsPerTick;
+
+  function onDrag(eventView: EventView, newX: number): void {
+    const message: EventAction = {
+      type: "UPDATE_EVENT",
+      payload: { ...eventView, x: newX },
+    };
+    dispatch(message);
+  }
 
   return (
     <div
@@ -32,6 +43,7 @@ function EventList({
           pixelsPerTick={pixelsPerTick}
           yearPerTick={yearPerTick}
           start_year={start}
+          onUpdateX={onDrag}
         />
       ))}
     </div>

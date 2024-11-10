@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Sidepanel dispatch={dispatch}></Sidepanel>
-      <Timeline storyState={storyState}></Timeline>
+      <Timeline storyState={storyState} dispatch={dispatch}></Timeline>
     </>
   );
 }

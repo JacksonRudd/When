@@ -8,8 +8,9 @@ import "./Timeline.css";
 
 interface timelineProps {
   storyState: StoryModel;
+  dispatch: React.Dispatch<any>;
 }
-function Timeline({ storyState }: timelineProps) {
+function Timeline({ storyState, dispatch }: timelineProps) {
   // get the first date (or 1905) then pipe to subtract five years
 
   const startYear =
@@ -54,6 +55,7 @@ function Timeline({ storyState }: timelineProps) {
         pixelsPerTick={pixelsPerTick}
         eventViews={storyState.events}
         yearPerTick={yearsPerTick}
+        dispatch={dispatch}
       ></EventList>
     </div>
   );
