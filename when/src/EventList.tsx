@@ -23,6 +23,16 @@ function EventList({
 
   const years_diff = end.getFullYear() - start.getFullYear();
   const height = (years_diff + 1) * pixelsPerTick;
+
+  const colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink"];
+  function eventNameToColor(eventName: string): string {
+    return colors[
+      Math.abs(
+        eventName.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) %
+          colors.length
+      )
+    ];
+  }
   return (
     <div
       className="eventlist"
@@ -38,6 +48,7 @@ function EventList({
           pixelsPerTick={pixelsPerTick}
           yearPerTick={yearPerTick}
           start_year={start}
+          color={eventNameToColor(eventModel.name)}
         />
       ))}
     </div>

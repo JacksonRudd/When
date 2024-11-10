@@ -3,7 +3,7 @@
 }
 
 .event {
-  background: var(--outer-space);
+  background: var(--event-color);
   position: absolute;
   top: var(--event-height);
   font-family: "Mulish", sans-serif;
