@@ -1,4 +1,3 @@
-import { useState } from "react";
 import EventList from "./EventList";
 import StoryModel, {
   getEarliestEvent,
