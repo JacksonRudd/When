@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventForm from "./EventForm";
 import "./Sidepanel.css";
 import EventModel from "./models/EventModel";
@@ -58,6 +58,22 @@ interface SidePanelProps {
 function SidePanel({ dispatch }: SidePanelProps) {
   const [showForm, setShowForm] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+
+  // function to set --sidepanel-width to 300px
+  const setWidth = (pixels: number) => {
+    document.documentElement.style.setProperty(
+      "--sidepanel-width",
+      `${pixels}px`
+    );
+  };
+
+  useEffect(() => {
+    if (showForm || showSearch) {
+      setWidth(300);
+    } else {
+      setWidth(100);
+    }
+  }, [showForm, showSearch]);
 
   const handleShowEvent = () => {
     setShowForm(!showForm);

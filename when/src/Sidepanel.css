@@ -3,7 +3,9 @@
   background-color: var(--outer-space);
   color: var(--seasalt);
   text-align: center;
-  width: 400px;
+  /* width: var(--sidepanel-width); */
+  /* do the above but with px since --sidepanel-width  is just a number */
+  width: var(--sidepanel-width);
   position: fixed;
   height: 100%;
   padding-top: 20px;
