@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Event.css";
 import EventView from "./views/EventView";
 
@@ -7,7 +7,7 @@ interface EventProps {
   start_year: Date;
   pixelsPerTick: number;
   yearPerTick: number;
-  onUpdateX: (eventView: EventView, newX: number) => void; // Prop to update x position
+  onUpdateX: (eventView: EventView, newX: number) => void;
 }
 
 function getDayOfYear(date: Date): number {
@@ -25,8 +25,7 @@ function Event({
   onUpdateX,
 }: EventProps) {
   const [dragging, setDragging] = useState(false);
-  const [originalMouseX, setOriginalMouseX] = useState(0);
-  console.log("eventView", eventView);
+  const [originalX, setOriginalX] = useState(0);
   const years_diff = eventView.date.getFullYear() - start_year.getFullYear();
   const percent_of_last_year = getDayOfYear(eventView.date) / 365;
   const tickPerYear = 1 / yearPerTick;
@@ -34,37 +33,59 @@ function Event({
     (years_diff + percent_of_last_year) * tickPerYear * pixelsPerTick +
     pixelsPerTick / 2 +
     4;
-  console.log("percent", percent_of_last_year, getDayOfYear(eventView.date));
-  console.log("height", height);
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
+
+  const handleDragStart = (x: number) => {
     setDragging(true);
-    setOriginalMouseX(e.clientX);
+    setOriginalX(x);
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleDragMove = (x: number) => {
     if (dragging) {
-      const newX = eventView.x + (e.x - originalMouseX);
-      onUpdateX(eventView, newX); // Call the prop to update x position
+      const newX = eventView.x + (x - originalX);
+      onUpdateX(eventView, newX);
+      setOriginalX(x);
     }
   };
 
-  const handleMouseUp = () => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    handleDragStart(e.clientX);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    handleDragStart(e.touches[0].clientX);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    handleDragMove(e.clientX);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    handleDragMove(e.touches[0].clientX);
+  };
+
+  const handleEndDrag = () => {
     setDragging(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (dragging) {
       document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("mouseup", handleEndDrag);
+      document.addEventListener("touchmove", handleTouchMove);
+      document.addEventListener("touchend", handleEndDrag);
     } else {
       document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("mouseup", handleEndDrag);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleEndDrag);
     }
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("mouseup", handleEndDrag);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleEndDrag);
     };
   }, [dragging]);
 
@@ -74,13 +95,14 @@ function Event({
       style={
         {
           "--event-height": `${height - 75}px`,
-          "--event-x": `${eventView.x}px`, // Reflects the updated x position
+          "--event-x": `${eventView.x}px`,
           "--z-index": 9999999 - eventView.x,
           "--event-color": eventView.color,
           "--info-display": dragging ? "none" : "block",
         } as React.CSSProperties
       }
       onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
     >
       <p className="eventname">{eventView.name}</p>
       <div className="eventinfo">

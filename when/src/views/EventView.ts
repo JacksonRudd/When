@@ -19,17 +19,13 @@ function eventNameToColor(eventName: string): string {
   ];
 }
 
-function randomX(): number {
-  return Math.floor(Math.random() * 1000);
-}
-
 function eventModelToEventModelView(eventModel: EventModel): EventView {
   return {
     name: eventModel.name,
     date: eventModel.date,
     location: eventModel.location,
     description: eventModel.description,
-    x: randomX(),
+    x: 10,
     color: eventNameToColor(eventModel.name),
   };
 }

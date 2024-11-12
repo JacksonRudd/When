@@ -22,16 +22,14 @@ function EventList({
   dispatch,
 }: EventListProps) {
   const years_diff = end.getFullYear() - start.getFullYear();
-  console.log("start", start);
-  console.log("end", end);
-  console.log("years_diff", years_diff);
   const tickPerYears = 1 / yearPerTick;
-  console.log("tickPerYears", tickPerYears);
-  console.log("pixelsPerTick", pixelsPerTick);
   const height =
     (years_diff + 1) * tickPerYears * pixelsPerTick + pixelsPerTick / 2;
 
   function onDrag(eventView: EventView, newX: number): void {
+    if (newX < 10) {
+      return;
+    }
     const message: EventAction = {
       type: "UPDATE_EVENT",
       payload: { ...eventView, x: newX },

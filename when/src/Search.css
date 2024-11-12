@@ -1,6 +1,8 @@
 .search {
   margin: 20px;
   font-size: 10px;
+  /* it should not displace any other div when it appears */
+  margin-bottom: 0;
 }
 
 .search input {
@@ -8,6 +10,7 @@
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
+  margin-bottom: 10px;
 }
 
 .search input:focus {

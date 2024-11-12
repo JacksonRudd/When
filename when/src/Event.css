@@ -1,5 +1,5 @@
 :root {
-  --vertical-size: 150px;
+  --vertical-size: 100px;
 }
 
 .event {
@@ -112,5 +112,16 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* for phone screens the font should be smaller */
+@media (max-width: 600px) {
+  .event {
+    font-size: 1rem;
+  }
+  /* and the vertical size should be 50 not 150 */
+  :root {
+    --vertical-size: 50px;
   }
 }

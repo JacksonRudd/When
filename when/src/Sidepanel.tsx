@@ -75,6 +75,7 @@ function SidePanel({ dispatch }: SidePanelProps) {
       payload: eventModelToEventModelView(eventModel),
     });
     setShowForm(false);
+    setShowSearch(false);
   };
 
   return (
@@ -82,7 +83,7 @@ function SidePanel({ dispatch }: SidePanelProps) {
       <div className="options">
         <button onClick={handleShowEvent}>{add_icon()}</button>
         <button onClick={handleSearchEvent}>{magnifying_glass_icon()}</button>
-        <button>{menu_icon()}</button>
+        {/* <button>{menu_icon()}</button> */}
         {showForm && <EventForm onSubmit={onSubmit}></EventForm>}
         {showSearch && <Search onClick={onSubmit}></Search>}
       </div>

@@ -9,3 +9,11 @@
   scrollbar-width: none;
   width: 100% - 400px;
 }
+
+/* on phones the width should be 100% */
+@media only screen and (max-width: 600px) {
+  .timeline {
+    margin-left: 0;
+    width: 100%;
+  }
+}
