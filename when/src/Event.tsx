@@ -26,6 +26,7 @@ function Event({
 }: EventProps) {
   const [dragging, setDragging] = useState(false);
   const [originalX, setOriginalX] = useState(0);
+  const tall = 100;
   const years_diff = eventView.date.getFullYear() - start_year.getFullYear();
   const percent_of_last_year = getDayOfYear(eventView.date) / 365;
   const tickPerYear = 1 / yearPerTick;
@@ -94,7 +95,8 @@ function Event({
       className="event"
       style={
         {
-          "--event-height": `${height - 75}px`,
+          "--vertical-size": `${tall}px`,
+          "--event-height": `${height - tall / 2}px`,
           "--event-x": `${eventView.x}px`,
           "--z-index": 9999999 - eventView.x,
           "--event-color": eventView.color,

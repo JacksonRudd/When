@@ -1,7 +1,3 @@
-:root {
-  --vertical-size: 100px;
-}
-
 .event {
   background: var(--event-color);
   position: absolute;
