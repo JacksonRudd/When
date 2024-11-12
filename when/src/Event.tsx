@@ -112,7 +112,8 @@ function Event({
           <p>{eventView.description}</p>
         </div>
         <div className="eventtext">
-          <p>{eventView.location}</p>
+          <p>Location: {eventView.location}</p>
+          <p>year: {eventView.date.getFullYear()}</p>
         </div>
       </div>
     </div>
