@@ -20,22 +20,6 @@ function add_icon() {
   );
 }
 
-function menu_icon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line x1="3" y1="12" x2="21" y2="12" stroke="#A9A9A9" strokeWidth="2" />
-      <line x1="3" y1="6" x2="21" y2="6" stroke="#A9A9A9" strokeWidth="2" />
-      <line x1="3" y1="18" x2="21" y2="18" stroke="#A9A9A9" strokeWidth="2" />
-    </svg>
-  );
-}
-
 function magnifying_glass_icon() {
   return (
     <svg
@@ -99,7 +83,6 @@ function SidePanel({ dispatch }: SidePanelProps) {
       <div className="options">
         <button onClick={handleShowEvent}>{add_icon()}</button>
         <button onClick={handleSearchEvent}>{magnifying_glass_icon()}</button>
-        {/* <button>{menu_icon()}</button> */}
         {showForm && <EventForm onSubmit={onSubmit}></EventForm>}
         {showSearch && <Search onClick={onSubmit}></Search>}
       </div>
