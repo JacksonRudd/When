@@ -8,6 +8,7 @@ interface EventProps {
   pixelsPerTick: number;
   yearPerTick: number;
   onUpdateX: (eventView: EventView, newX: number) => void;
+  onClose: (eventView: EventView) => void;
 }
 
 function getDayOfYear(date: Date): number {
@@ -23,6 +24,7 @@ function Event({
   start_year,
   yearPerTick,
   onUpdateX,
+  onClose,
 }: EventProps) {
   const [dragging, setDragging] = useState(false);
   const [originalX, setOriginalX] = useState(0);
@@ -69,6 +71,10 @@ function Event({
     setDragging(false);
   };
 
+  const onExit = () => {
+    onClose(eventView);
+  };
+
   useEffect(() => {
     if (dragging) {
       document.addEventListener("mousemove", handleMouseMove);
@@ -106,6 +112,9 @@ function Event({
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
     >
+      <button className="exit" onClick={onExit}>
+        X
+      </button>
       <p className="eventname">{eventView.name}</p>
       <div className="eventinfo">
         <div className="eventtext">
@@ -113,7 +122,7 @@ function Event({
         </div>
         <div className="eventtext">
           <p>Location: {eventView.location}</p>
-          <p>year: {eventView.date.getFullYear()}</p>
+          <p>Year: {eventView.date.getFullYear()}</p>
         </div>
       </div>
     </div>

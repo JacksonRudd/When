@@ -37,6 +37,14 @@ function EventList({
     dispatch(message);
   }
 
+  function onClose(eventView: EventView): void {
+    const message: EventAction = {
+      type: "DELETE_EVENT",
+      payload: eventView,
+    };
+    dispatch(message);
+  }
+
   return (
     <div
       className="eventlist"
@@ -54,6 +62,7 @@ function EventList({
           yearPerTick={yearPerTick}
           start_year={start}
           onUpdateX={onDrag}
+          onClose={onClose}
         />
       ))}
     </div>
