@@ -1,56 +1,27 @@
 import EventList from "./EventList";
-import StoryModel, {
-  getEarliestEvent,
-  getMostRecentEvent,
-} from "./views/StoryModel";
+import StoryModel from "./views/StoryModel";
 import Ruler from "./Ruler";
 import "./Timeline.css";
+import {
+  getFirstAndLastYearOrDefault,
+  getTimelineParameters,
+} from "./models/timelineFunctions";
 
 interface timelineProps {
   storyState: StoryModel;
   dispatch: React.Dispatch<any>;
 }
+
 function Timeline({ storyState, dispatch }: timelineProps) {
   // get the first date (or 1905) then pipe to subtract five years
 
-  let startYear;
-  let endYear;
-  const pageHeight = window.innerHeight;
+  let { startYear, endYear } = getFirstAndLastYearOrDefault(storyState);
 
-  if (storyState.events.length === 0) {
-    startYear = 1905;
-    endYear = 2020;
-  } else {
-    startYear = getEarliestEvent(storyState)?.date.getFullYear() - 10;
-    endYear = getMostRecentEvent(storyState)?.date.getFullYear() + 50;
-  }
-
-  const year_delta = endYear - startYear;
-
-  const pixelsPerYear = pageHeight / year_delta;
-  function yearsPerTickToPixelsPerYear(pixelsPerYear: number): number {
-    const index = 50 / pixelsPerYear;
-    const options = [
-      1, 2, 5, 10, 20, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000,
-    ];
-    const closest = options.reduce((prev, curr) =>
-      Math.abs(curr - index) < Math.abs(prev - index) ? curr : prev
-    );
-
-    return closest;
-  }
-  const yearsPerTick = yearsPerTickToPixelsPerYear(pixelsPerYear); // should have values of 1, 5, 10, 20, 50, 100 ...
-  const start = new Date(
-    startYear - (startYear % yearsPerTick) - 2 * yearsPerTick,
-    0,
-    1
+  const { start, end, pixelsPerTick, yearsPerTick } = getTimelineParameters(
+    startYear,
+    endYear,
+    window.innerHeight
   );
-  const end = new Date(
-    endYear - (endYear % yearsPerTick) + 4 * yearsPerTick,
-    0,
-    1
-  );
-  const pixelsPerTick = pixelsPerYear * yearsPerTick; // should have values between 50 and 100
 
   return (
     <div className="timeline">
