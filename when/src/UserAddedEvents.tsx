@@ -1,5 +1,7 @@
+import { useState } from "react";
 import EventForm from "./EventForm";
 import EventModel from "./models/EventModel";
+import MyEvents from "./MyEvents";
 import "./UserAddedEvents.css";
 
 interface UserAddedEventsProps {
@@ -13,20 +15,24 @@ function UserAddedEvents({
   addUserEvent,
   deleteEvent,
 }: UserAddedEventsProps) {
+  const [showAddEvent, setShowAddEvent] = useState(false);
+
+  const addEventFromForm = (event: EventModel) => {
+    addUserEvent(event);
+    setShowAddEvent(false);
+  };
+
   return (
     <div className="user-added-events">
-      {" "}
-      <h1>New Events</h1>
-      <EventForm onSubmit={addUserEvent}></EventForm>
-      <h2>My Events</h2>
-      {userAddedEvents.map((event) => (
-        <div key={event.name} className="user-added-event">
-          <button onClick={() => deleteEvent(event)}>Delete</button>
-          <h2>{event.name}</h2>
-          <p>{event.description}</p>
-          <p>{event.location}</p>
-        </div>
-      ))}
+      <button
+        className="add-event-button"
+        onClick={() => setShowAddEvent(!showAddEvent)}
+      >
+        {" "}
+        Add Event
+      </button>
+      {showAddEvent && <EventForm onSubmit={addEventFromForm}></EventForm>}
+      <MyEvents userAddedEvents={userAddedEvents} deleteEvent={deleteEvent} />
     </div>
   );
 }

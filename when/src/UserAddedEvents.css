@@ -12,11 +12,3 @@
   gap: 1rem;
   align-items: center;
 }
-
-.user-added-event {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  background-color: #2f4f4f5e;
-  padding: 20px;
-}
