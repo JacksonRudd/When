@@ -1,6 +1,10 @@
-body,
+body {
+  height: 100%;
+  margin: 0px;
+}
 html {
   padding: 0px;
   margin: 0px;
   overscroll-behavior: none;
+  height: 100%;
 }

@@ -11,3 +11,7 @@
   --eerie-black: #212529ff;
   --sidepanel-width: 100px;
 }
+
+#root {
+  height: 100%;
+}

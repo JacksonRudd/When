@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import EventForm from "./EventForm";
 import "./Sidepanel.css";
-import EventModel from "./models/EventModel";
 import Search from "./Search";
+import EventModel from "./models/EventModel";
 import { eventModelToEventModelView } from "./views/EventView";
 function add_icon() {
   return (
@@ -37,9 +36,10 @@ function magnifying_glass_icon() {
 
 interface SidePanelProps {
   dispatch: React.Dispatch<any>;
+  setShowUserEvents: () => void;
 }
 
-function SidePanel({ dispatch }: SidePanelProps) {
+function SidePanel({ dispatch, setShowUserEvents }: SidePanelProps) {
   const [showForm, setShowForm] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
@@ -52,16 +52,17 @@ function SidePanel({ dispatch }: SidePanelProps) {
   };
 
   useEffect(() => {
-    if (showForm || showSearch) {
+    if (showSearch) {
       setWidth(300);
     } else {
       setWidth(100);
     }
-  }, [showForm, showSearch]);
+  }, [showSearch]);
 
   const handleShowEvent = () => {
     setShowForm(!showForm);
     setShowSearch(false);
+    setShowUserEvents();
   };
 
   const handleSearchEvent = () => {
@@ -77,13 +78,13 @@ function SidePanel({ dispatch }: SidePanelProps) {
     setShowForm(false);
     setShowSearch(false);
   };
-
   return (
     <div className="sidepanel">
       <div className="options">
         <button onClick={handleShowEvent}>{add_icon()}</button>
-        <button onClick={handleSearchEvent}>{magnifying_glass_icon()}</button>
-        {showForm && <EventForm onSubmit={onSubmit}></EventForm>}
+        {!showForm && (
+          <button onClick={handleSearchEvent}>{magnifying_glass_icon()}</button>
+        )}
         {showSearch && <Search onClick={onSubmit}></Search>}
       </div>
     </div>

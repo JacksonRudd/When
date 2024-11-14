@@ -4,11 +4,9 @@
 
 ## Next
 
-- delete an event
+- It should remember events I create, and those events should be searchable
 
 ## Backlog
-
-- It should remember events I create, and those events should be searchable
 
 - I can't get autofill to stop showing up
 - We need more events
