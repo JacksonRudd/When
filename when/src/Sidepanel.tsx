@@ -3,6 +3,7 @@ import "./Sidepanel.css";
 import Search from "./Search";
 import EventModel from "./models/EventModel";
 import { eventModelToEventModelView } from "./views/EventView";
+import { useUserEvents } from "./models/userEvents";
 function add_icon() {
   return (
     <svg
@@ -37,12 +38,16 @@ function magnifying_glass_icon() {
 interface SidePanelProps {
   dispatch: React.Dispatch<any>;
   setShowUserEvents: () => void;
+  searchUserEvents: (searchText: string) => EventModel[];
 }
 
-function SidePanel({ dispatch, setShowUserEvents }: SidePanelProps) {
+function SidePanel({
+  dispatch,
+  setShowUserEvents,
+  searchUserEvents,
+}: SidePanelProps) {
   const [showForm, setShowForm] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
   // function to set --sidepanel-width to 300px
   const setWidth = (pixels: number) => {
     document.documentElement.style.setProperty(
@@ -85,7 +90,12 @@ function SidePanel({ dispatch, setShowUserEvents }: SidePanelProps) {
         {!showForm && (
           <button onClick={handleSearchEvent}>{magnifying_glass_icon()}</button>
         )}
-        {showSearch && <Search onClick={onSubmit}></Search>}
+        {showSearch && (
+          <Search
+            onClick={onSubmit}
+            searchUserEvents={searchUserEvents}
+          ></Search>
+        )}
       </div>
     </div>
   );

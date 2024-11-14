@@ -4,7 +4,12 @@ import EventModel from "./EventModel";
 const useUserEvents = () => {
   const [userAddedEvents, setUserAddedEvents] = useState<EventModel[]>(() => {
     const savedEvents = localStorage.getItem("userAddedEvents");
-    return savedEvents ? JSON.parse(savedEvents) : [];
+    return savedEvents
+      ? JSON.parse(savedEvents).map((event: EventModel) => ({
+          ...event,
+          date: new Date(event.date), // Convert date strings back to Date objects
+        }))
+      : [];
   });
 
   useEffect(() => {
@@ -21,7 +26,13 @@ const useUserEvents = () => {
     );
   };
 
-  return { userAddedEvents, addUserEvent, deleteEvent };
+  const searchUserEvents = (searchText: string) => {
+    return userAddedEvents.filter((event) =>
+      event.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+  };
+
+  return { userAddedEvents, addUserEvent, deleteEvent, searchUserEvents };
 };
 
 export { useUserEvents };

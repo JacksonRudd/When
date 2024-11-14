@@ -10,7 +10,8 @@ import { useUserEvents } from "./models/userEvents";
 function App() {
   const [storyState, dispatch] = useReducer(eventReducer, initialStoryState);
   const [showUserAddedEvents, setShowUserAddedEvents] = useState(false);
-  const { userAddedEvents, addUserEvent, deleteEvent } = useUserEvents();
+  const { userAddedEvents, addUserEvent, deleteEvent, searchUserEvents } =
+    useUserEvents();
 
   function toggleUserAddedEvents() {
     setShowUserAddedEvents(!showUserAddedEvents);
@@ -22,6 +23,7 @@ function App() {
       <Sidepanel
         dispatch={dispatch}
         setShowUserEvents={toggleUserAddedEvents}
+        searchUserEvents={searchUserEvents}
       />
       {!showUserAddedEvents && (
         <Timeline storyState={storyState} dispatch={dispatch} />

@@ -5,9 +5,10 @@ import EventModel from "./models/EventModel";
 
 interface SearchProps {
   onClick: (event: EventModel) => void;
+  searchUserEvents: (searchText: string) => EventModel[];
 }
 
-function Search({ onClick }: SearchProps) {
+function Search({ onClick, searchUserEvents }: SearchProps) {
   //   add state for search text
 
   const [searchText, setSearchText] = useState("");
@@ -16,7 +17,9 @@ function Search({ onClick }: SearchProps) {
     if (searchText === "") {
       return [];
     }
-    return get_events_by_substring(searchText);
+    const other_events = get_events_by_substring(searchText);
+    const user_events = searchUserEvents(searchText);
+    return [...user_events, ...other_events];
   }
 
   function handle_click(event: EventModel) {
