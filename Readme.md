@@ -22,4 +22,3 @@
   - I should be able to not add the entire date if I don't want to.
     - I should probably switch to optional fields
   - The add events button could have nice styling
-  - table shouldn't change size depending on the size of the input
