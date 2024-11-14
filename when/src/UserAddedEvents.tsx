@@ -24,6 +24,11 @@ function UserAddedEvents({
 
   return (
     <div className="user-added-events">
+      <h1>My Events</h1>
+      <p>
+        When you add your own events, they become searchable and can be added to
+        your timelines{" "}
+      </p>
       <button
         className="add-event-button"
         onClick={() => setShowAddEvent(!showAddEvent)}
