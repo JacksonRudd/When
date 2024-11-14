@@ -3,7 +3,6 @@ import "./Sidepanel.css";
 import Search from "./Search";
 import EventModel from "./models/EventModel";
 import { eventModelToEventModelView } from "./views/EventView";
-import { useUserEvents } from "./models/userEvents";
 function add_icon() {
   return (
     <svg
